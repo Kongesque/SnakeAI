@@ -1,26 +1,17 @@
 "use client"
 
-import React, { useRef, useEffect, useState} from 'react';
+import React, { useRef, useEffect} from 'react';
 import p5 from 'p5';
+import dynamic from 'next/dynamic';
 
 const SnakeGame: React.FC = () => {
     const canvasRef = useRef<HTMLDivElement>(null);
-    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
 
       let blocksX = 40, blocksY = 20;
       let maxBlocks = 1000, blockSize: number, xOffset = 0, yOffset = 0, s: any, pause = false, speedMultiplier = 1, hc: any, outlineLength = 3, setup_i = 0;
     
-      const checkIsMobile = () => {
-        if (typeof window !== 'undefined') {
-          setIsMobile(window.innerWidth < 768);
-        }
-      };
-
-      checkIsMobile();
-       window.addEventListener("resize", checkIsMobile);
-
       const sketch = (p: p5) => {
           p.setup = () => {
               setup_i++;
@@ -550,4 +541,4 @@ const SnakeGame: React.FC = () => {
     );
 };
 
-export default SnakeGame;
+export default dynamic(() => Promise.resolve(SnakeGame), { ssr: false });
