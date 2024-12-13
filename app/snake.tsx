@@ -10,7 +10,7 @@ const SnakeGame: React.FC = () => {
         if (typeof window !== "undefined") {
       let blocksX = 40, blocksY = 20;
       let maxBlocks = 1000, blockSize: number, xOffset = 0, yOffset = 0, s: any, pause = false, speedMultiplier = 1, hc: any, outlineLength = 3, setup_i = 0;
-    
+          
       const sketch = (p: p5) => {
           p.setup = () => {
               setup_i++;
