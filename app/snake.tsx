@@ -1,16 +1,13 @@
-"use client"
-
+"use client";
 import React, { useRef, useEffect} from 'react';
 import p5 from 'p5';
-import dynamic from 'next/dynamic';
 
 const SnakeGame: React.FC = () => {
     const canvasRef = useRef<HTMLDivElement>(null);
 
-
-
+    
     useEffect(() => {
-        if (typeof window !== "undefined") { 
+        if (typeof window !== "undefined") {
       let blocksX = 40, blocksY = 20;
       let maxBlocks = 1000, blockSize: number, xOffset = 0, yOffset = 0, s: any, pause = false, speedMultiplier = 1, hc: any, outlineLength = 3, setup_i = 0;
     

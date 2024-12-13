@@ -39,12 +39,12 @@ const SnakeGame = ()=>{
             ref: canvasRef
         }, void 0, false, {
             fileName: "[project]/app/snake.tsx",
-            lineNumber: 541,
+            lineNumber: 538,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/snake.tsx",
-        lineNumber: 540,
+        lineNumber: 537,
         columnNumber: 9
     }, this);
 };
