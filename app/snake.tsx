@@ -4,11 +4,13 @@ import p5 from 'p5';
 import dynamic from 'next/dynamic';
 
 
+
 const SnakeGame: React.FC = () => {
     const canvasRef = useRef<HTMLDivElement>(null);
-
+    
     useEffect(() => {
-        if (typeof window !== "undefined") {
+        
+        if (typeof window !== "undefined" && canvasRef.current) {
       let blocksX = 40, blocksY = 20;
       let maxBlocks = 1000, blockSize: number, xOffset = 0, yOffset = 0, s: any, pause = false, speedMultiplier = 1, hc: any, outlineLength = 3, setup_i = 0;
     
@@ -528,15 +530,15 @@ const SnakeGame: React.FC = () => {
               }
           }
       };
-        if (canvasRef.current) {
-            new p5(sketch, canvasRef.current);
-        }
+      new p5(sketch, canvasRef.current);
     }
+    
     }, []);
     
     return (
         <div className="w-full aspect-[2.35/1] bg-[#202222] rounded-md border-[2px] border-[#3d3f40]" id="snake-game-container">
             <div className="flex justify-center items-center h-full" id="snake-game" ref={canvasRef} style={{ width: '100%', height: '100%' }}></div>
+            
         </div>
         
     );

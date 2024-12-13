@@ -21,7 +21,7 @@ const SnakeGame = ()=>{
     const canvasRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "SnakeGame.useEffect": ()=>{
-            if ("TURBOPACK compile-time truthy", 1) {
+            if ("object" !== "undefined" && canvasRef.current) {
                 let blocksX = 40, blocksY = 20;
                 let maxBlocks = 1000, blockSize, xOffset = 0, yOffset = 0, s, pause = false, speedMultiplier = 1, hc, outlineLength = 3, setup_i = 0;
                 const sketch = {
@@ -572,9 +572,7 @@ const SnakeGame = ()=>{
                         }
                     }
                 }["SnakeGame.useEffect.sketch"];
-                if (canvasRef.current) {
-                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$p5$2f$lib$2f$p5$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"](sketch, canvasRef.current);
-                }
+                new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$p5$2f$lib$2f$p5$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"](sketch, canvasRef.current);
             }
         }
     }["SnakeGame.useEffect"], []);
@@ -584,15 +582,19 @@ const SnakeGame = ()=>{
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "flex justify-center items-center h-full",
             id: "snake-game",
-            ref: canvasRef
+            ref: canvasRef,
+            style: {
+                width: '100%',
+                height: '100%'
+            }
         }, void 0, false, {
             fileName: "[project]/app/snake.tsx",
-            lineNumber: 538,
+            lineNumber: 539,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/snake.tsx",
-        lineNumber: 537,
+        lineNumber: 538,
         columnNumber: 9
     }, this);
 };
@@ -625,8 +627,13 @@ const Home = ()=>{
     _s();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Home.useEffect": ()=>{
-            if ("TURBOPACK compile-time falsy", 0) {
-                "TURBOPACK unreachable";
+            if ("TURBOPACK compile-time truthy", 1) {
+                try {
+                    // Any initialization code can go here
+                    console.log("Home component mounted");
+                } catch (error) {
+                    console.error("Error during Home component initialization:", error);
+                }
             }
         }
     }["Home.useEffect"], []);
@@ -639,23 +646,23 @@ const Home = ()=>{
                     children: "A Perfect Snake AI"
                 }, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 19,
+                    lineNumber: 21,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$snake$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/app/page.tsx",
-                    lineNumber: 20,
+                    lineNumber: 22,
                     columnNumber: 11
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/page.tsx",
-            lineNumber: 18,
+            lineNumber: 20,
             columnNumber: 9
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/page.tsx",
-        lineNumber: 17,
+        lineNumber: 19,
         columnNumber: 7
     }, this);
 };
