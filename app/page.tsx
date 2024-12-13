@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import SnakeGame from '../components/snake';
+import SnakeGame from './snake';
 
 
 const Home: NextPage = () => {
