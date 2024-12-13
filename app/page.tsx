@@ -1,18 +1,7 @@
-"use client";
 import type { NextPage } from 'next';
 import SnakeGame from './snake';
-import { useEffect } from 'react';
-
-
 
 const Home: NextPage = () => {
-
-  useEffect(() => {
-  if (typeof window == "undefined") {
-    return;
-  }
-
-  }, []);
     return (
       <main>
         <div className="flex flex-col items-center justify-center h-screen mx-auto max-w-xl px-6">  
