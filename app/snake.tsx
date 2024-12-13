@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect} from 'react';
-import p5 from 'p5';
+import p5 from './p5.js';
 
 const SnakeGame: React.FC = () => {
     const canvasRef = useRef<HTMLDivElement>(null);

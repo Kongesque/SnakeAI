@@ -10,7 +10,7 @@ __turbopack_esm__({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$p5$2f$lib$2f$p5$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/p5/lib/p5.min.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$p5$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/app/p5.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_refresh__.signature();
 "use client";
@@ -573,7 +573,7 @@ const SnakeGame = ()=>{
                     }
                 }["SnakeGame.useEffect.sketch"];
                 if (canvasRef.current) {
-                    new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$p5$2f$lib$2f$p5$2e$min$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"](sketch, canvasRef.current);
+                    new __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$p5$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"](sketch, canvasRef.current);
                 }
             }
         }
