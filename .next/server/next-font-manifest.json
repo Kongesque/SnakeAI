@@ -1,1 +1,10 @@
-{"pages":{},"app":{"/Users/kongphopmengkuang/snakejs/app/layout":["static/media/76562e1b82d24144-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}
+{
+  "app": {
+    "[project]/app/page": [
+      "static/media/R70YjykVmvKCep_vWhSonwqRfTHxTw-s.p.60aba22a.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}

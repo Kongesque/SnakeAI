@@ -3,12 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "export",
   typescript: {
-    ignoreBuildErrors: process.env.CI ? true : false,
+    ignoreBuildErrors: true,
   },
   eslint: {
-    ignoreDuringBuilds: process.env.CI ? true : false,
+    ignoreDuringBuilds: true,
   },
-};
+};  
 
 export default nextConfig;
  

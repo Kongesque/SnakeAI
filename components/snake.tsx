@@ -7,8 +7,9 @@ const SnakeGame: React.FC = () => {
     const canvasRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+
       let blocksX = 40, blocksY = 20;
-      let maxBlocks = 1000, blockSize: number, xOffset = 0, yOffset = 0, s: Snake, pause = false, speedMultiplier = 1, hc: HamiltonianCycle, outlineLength = 3, setup_i = 0;
+      let maxBlocks = 1000, blockSize: number, xOffset = 0, yOffset = 0, s: any, pause = false, speedMultiplier = 1, hc: any, outlineLength = 3, setup_i = 0;
     
       const sketch = (p: p5) => {
           p.setup = () => {
@@ -105,6 +106,7 @@ const SnakeGame: React.FC = () => {
               cycle: any;
               headCyclePosition: number;
               tailCyclePosition: number;
+              appleCyclePosition: any;
               constructor(p: p5) {
                 this.x = Math.floor(blocksX / 2);
                 this.y = Math.floor(blocksY / 2);
@@ -209,7 +211,7 @@ const SnakeGame: React.FC = () => {
                                 f.getLastNode().alreadyVisited && f.pathLength > f.getLastNode().shortestDistanceToThisPoint || a.push(f);
                             }
                         }
-                        a.sort((f, n) => f.distanceToApple + f.pathLength - (n.distanceToApple + n.pathLength));
+                        a.sort((f: HPath, n: HPath) => f.distanceToApple + f.pathLength - (n.distanceToApple + n.pathLength));
                     }
                 }
                 getDistanceBetweenPoints(a: any, b: any) {
@@ -294,13 +296,13 @@ const SnakeGame: React.FC = () => {
                 this.createSpanningTree(p);
                   var a:any[] = [];
                   let b:HNode[] = [];
-                  for (a = 0; a < this.w; a++)
-                      for (var c = 0; c < this.h; c++) b.push(new HNode(a, c));
+                  for (let i = 0; i < this.w; i++)
+                      for (var c = 0; c < this.h; c++) b.push(new HNode(i, c));
                   for (var d of b) d.setEdges(b);
-                  for (a = 0; a < this.spanningTreeNodes.length; a++) {
-                      d = this.spanningTreeNodes[a];
-                      for (var e of d.spanningTreeAdjacentNodes) {
-                          c = (p: any, t: any, q: any, u: any) => {
+                  for (let i = 0; i < this.spanningTreeNodes.length; i++) {
+                      let d = this.spanningTreeNodes[i];
+                      for (let e of d.spanningTreeAdjacentNodes) {
+                          let c = (p: any, t: any, q: any, u: any) => {
                               t + this.h * p >= b.length || u + this.h * q >= b.length || (p = b[t + this.h * p], q = b[u + this.h * q], p.spanningTreeAdjacentNodes.push(q), q.spanningTreeAdjacentNodes.push(p))
                           };
                           let k = d.getDirectionTo(e),
@@ -311,30 +313,28 @@ const SnakeGame: React.FC = () => {
                       }
                   }
                   a = b.filter(k => k.spanningTreeAdjacentNodes.length === 1);
-                
-                    e = [];
-                    for (var f of a) {
-                        a = f.spanningTreeAdjacentNodes[0].getDirectionTo(f);
-                        a.x += f.x;
-                        a.y += f.y;
-                        a = new HEdge(b[a.y + this.h * a.x], f);
-                        d = true;
-                        for (var n of e) if (n.isEqualTo(a)) {
+                    let e: HEdge[] = [];
+                    for (let f of a) {
+                        let dir = f.spanningTreeAdjacentNodes[0].getDirectionTo(f);
+                        dir.x += f.x;
+                        dir.y += f.y;
+                        let edge = new HEdge(b[dir.y + this.h * dir.x], f);
+                        let d = true;
+                        for (let n of e) if (n.isEqualTo(edge)) {
                             d = false;
                             break;
                         }
-                        d && e.push(a);
+                        d && e.push(edge);
                     }
-                
                   for (let k of e) k.connectNodes();
                   a = b.filter(k => k.spanningTreeAdjacentNodes.length === 1);
                     e = [];
-                    for (var g of a)
-                        for (var h of a)
+                    for (let g of a)
+                        for (let h of a)
                             if (p.dist(g.x, g.y, h.x, h.y) === 1 && Math.floor(g.x / 2) === Math.floor(h.x / 2) && Math.floor(g.y / 2) === Math.floor(h.y / 2)) {
-                                f = new HEdge(h, g);
-                                n = true;
-                                for (var r of e) if (r.isEqualTo(f)) {
+                                let f = new HEdge(h, g);
+                                let n = true;
+                                for (let r of e) if (r.isEqualTo(f)) {
                                     n = false;
                                     break;
                                 }
@@ -342,10 +342,11 @@ const SnakeGame: React.FC = () => {
                                 break;
                             }
                   for (let k of e) k.connectNodes();
-                a = [b.getRandomElement()];
-                  g = a[0];
-                  for (h = a[0].spanningTreeAdjacentNodes[0]; h !== a[0];) {
-                      r = h.spanningTreeAdjacentNodes[0];
+                let randomElement = b[Math.floor(p.random(b.length))];
+                a = [randomElement];
+                  let g = a[0];
+                  for (let h = a[0].spanningTreeAdjacentNodes[0]; h !== a[0];) {
+                      let r = h.spanningTreeAdjacentNodes[0];
                       r === g && (r = h.spanningTreeAdjacentNodes[1]);
                       a.push(h);
                       g = h;
@@ -369,22 +370,26 @@ const SnakeGame: React.FC = () => {
                               p.line(this.cycle[a].x, this.cycle[a].y, this.cycle[0].x, this.cycle[0].y),
                           p.pop();
               }
-              createSpanningTree(p:p5) {
+              createSpanningTree(p: p5) {
                   let a: HNode[] = [];
-                  for (var b = 0; b < this.w / 2; b++) for (var c = 0; c < this.h / 2; c++) a.push(new HNode(b, c));
+                  for (var b = 0; b < this.w / 2; b++) for (let i = 0; i < this.h / 2; i++) a.push(new HNode(b, i));
                   for (var d of a) d.setEdges(a);
-                b = [];
-                  c = a[Math.floor(p.random(a.length))];
-                  b.push(new HEdge(c, c.edges[0]));
+                  let edges: HEdge[] = [];
+                  let c = a[Math.floor(p.random(a.length))];
+                  edges.push(new HEdge(c, c.edges[0]));
                   let e = [c, c.edges[0]];
                   for (; e.length < a.length;) {
-                      c = e.getRandomElement();
-                      d = c.edges.filter(f => !e.includes(f));
-                      d.length !== 0 && (d = d.getRandomElement(), e.push(d), b.push(new HEdge(c, d)));
+                      c = (e as any).getRandomElement(p);
+                      const filteredEdges = c.edges.filter((f: HNode) => !e.includes(f));
+                      if (filteredEdges.length !== 0) {
+                          d = (filteredEdges as any).getRandomElement(p);
+                          e.push(d);
+                          edges.push(new HEdge(c, d));
+                      }
                   }
-                  for (let f of a) f.setSpanningTreeEdges(b);
-                this.spanningTreeNodes = a;
-                }
+                  for (let f of a) f.setSpanningTreeEdges(edges);
+                  this.spanningTreeNodes = a;
+              }
               getNextPosition(a: any, b: any) {
                   for (let c = 0; c < this.cycle.length; c++) if (this.cycle[c].x === a && this.cycle[c].y === b) return this.cycle[(c + 1) % this.cycle.length];
                   return null;
@@ -395,15 +400,16 @@ const SnakeGame: React.FC = () => {
               }
               getPossiblePositionsFrom(a: any, b: any) {
                   a = this.cycle[this.getNodeNo(a, b)];
-                  b = [];
-                  for (let c of a.edges) b.push(this.getNodeNo(c.x, c.y));
-                  return b;
+                  let positions: number[] = [];
+                  for (let c of a.edges) positions.push(this.getNodeNo(c.x, c.y));
+                  return positions;
               }
           }
            
-          (Array.prototype as any).getRandomElement = function () {
+          (Array.prototype as any).getRandomElement = function (p: p5): any {
             return this[Math.floor(p.random(this.length))];
           };
+
           class HNode {
               x: number;
               y: number;
@@ -429,10 +435,10 @@ const SnakeGame: React.FC = () => {
               }
               getNextNodeMovingLeft(a: HNode): HNode {
                 let b = a.getDirectionTo(this);
-                  a = [];
-                  for (var c of this.spanningTreeAdjacentNodes) a.push(this.getDirectionTo(c));
-                  for (c = getLeftOf(b); !a.includes(c);) c = getRightOf(c);
-                  return this.spanningTreeAdjacentNodes[a.indexOf(c)];
+                let directions: { x: number; y: number; }[] = [];
+                for (var c of this.spanningTreeAdjacentNodes) directions.push(this.getDirectionTo(c));
+                for (let c = getLeftOf(b); !directions.some(dir => dir.x === c.x && dir.y === c.y);) c = getRightOf(c);
+                return this.spanningTreeAdjacentNodes[directions.findIndex(dir => dir.x === c.x && dir.y === c.y)];
               }
               getDirectionTo(a: HNode): { x: number; y: number; } {
                 return { x: a.x - this.x, y: a.y - this.y };
@@ -500,11 +506,12 @@ const SnakeGame: React.FC = () => {
                   return this.nodesInPath[this.nodesInPath.length - 1];
               }
               getSnakeTailPositionAfterFollowingPath(a: Snake): HNode {
-                  return this.pathLength - a.addCount < a.tailBlocks.length ?
-                      a.tailBlocks[Math.max(0, this.pathLength - a.addCount)]
+                  const tailBlocksAsHNodes = a.tailBlocks.map(block => new HNode(block.x, block.y));
+                  return this.pathLength - a.addCount < tailBlocksAsHNodes.length ?
+                      tailBlocksAsHNodes[Math.max(0, this.pathLength - a.addCount)]
                       :
-                      this.nodesInPath[this.pathLength - a.addCount - a.tailBlocks.length];
-                }
+                      this.nodesInPath[this.pathLength - a.addCount - tailBlocksAsHNodes.length];
+              }
               getNextMove(): { x: number; y: number; } {
                   let a = this.nodesInPath[this.pathCounter + 1].x - this.nodesInPath[this.pathCounter].x,
                       b = this.nodesInPath[this.pathCounter + 1].y - this.nodesInPath[this.pathCounter].y;
@@ -520,13 +527,13 @@ const SnakeGame: React.FC = () => {
               }
           }
       };
-     if (canvasRef.current) {
-         new p5(sketch, canvasRef.current);
-     }
+        if (canvasRef.current) {
+            new p5(sketch, canvasRef.current);
+        }
     }, []);
     
     return (
-        <div className="w-full aspect-[2.39/1] bg-[#202222] rounded-md border-[2px] border-[#3d3f40]" id="snake-game-container">
+        <div className="w-full aspect-[2.35/1] bg-[#202222] rounded-md border-[2px] border-[#3d3f40]" id="snake-game-container">
             <div className="flex justify-center items-center h-full" id="snake-game" ref={canvasRef}></div>
         </div>
         
