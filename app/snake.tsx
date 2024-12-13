@@ -1,3 +1,4 @@
+"use client";
 import React, { useRef, useEffect} from 'react';
 import p5 from './p5.js';
 
@@ -6,6 +7,7 @@ const SnakeGame: React.FC = () => {
 
     
     useEffect(() => {
+        if (typeof window !== "undefined") {
       let blocksX = 40, blocksY = 20;
       let maxBlocks = 1000, blockSize: number, xOffset = 0, yOffset = 0, s: any, pause = false, speedMultiplier = 1, hc: any, outlineLength = 3, setup_i = 0;
           
@@ -528,6 +530,7 @@ const SnakeGame: React.FC = () => {
         if (canvasRef.current) {
             new p5(sketch, canvasRef.current);
         }
+    }
     }, []);
     
     return (
