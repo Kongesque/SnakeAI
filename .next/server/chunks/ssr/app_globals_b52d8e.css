@@ -318,14 +318,6 @@ img, video {
   display: flex;
 }
 
-.aspect-\[2\.39\/1\] {
-  aspect-ratio: 2.39;
-}
-
-.aspect-\[4\/1\] {
-  aspect-ratio: 4;
-}
-
 .aspect-\[2\.35\/1\] {
   aspect-ratio: 2.35;
 }
