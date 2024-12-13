@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import SnakeGame from './snake';
 
 
+
 const Home: NextPage = () => {
     return (
       <main>
