@@ -51,9 +51,8 @@ const SnakeGame = ()=>{
                                     }
                                 }["SnakeGame.useEffect.sketch.toggleSpeed"];
                                 if (a) {
-                                    a.addEventListener('mouseover', toggleSpeed);
-                                    a.addEventListener('mouseout', toggleSpeed);
-                                    a.addEventListener('touchstart', toggleSpeed);
+                                    a.addEventListener('click', toggleSpeed);
+                                    a.style.cursor = 'pointer';
                                 }
                                 window.addEventListener("resize", resize);
                             }
@@ -589,13 +588,13 @@ const SnakeGame = ()=>{
             }
         }, void 0, false, {
             fileName: "[project]/app/snake.tsx",
-            lineNumber: 540,
-            columnNumber: 13
+            lineNumber: 553,
+            columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/snake.tsx",
-        lineNumber: 539,
-        columnNumber: 9
+        lineNumber: 552,
+        columnNumber: 5
     }, this);
 };
 _s(SnakeGame, "UJgi7ynoup7eqypjnwyX/s32POg=");

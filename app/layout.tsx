@@ -16,8 +16,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-
-      <body className={`${xanhMono.variable} antialiased bg-[#191a1a] text-[#e8e8e6]`}> {children} </body>
+      <body className={`${xanhMono.variable} antialiased bg-[#191a1a] text-[#e8e8e6]`}>
+        {children}
+      </body>
     </html>
   );
 }
