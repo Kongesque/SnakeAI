@@ -5,3 +5,7 @@
 .xanh-mono-font {
     font-family: var(--font-xanh-mono);
   }
+
+.geist-mono-font {
+  font-family: 'Geist Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
