@@ -2,8 +2,8 @@
 import type { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 
-import SnakeGame from '../components/snake';
-// const SnakeGame = dynamic(() => import('../components/snake'), { ssr: false });
+// import SnakeGame from '../components/snake';
+const SnakeGame = dynamic(() => import('../components/snake'), { ssr: false });
 
 const Home: NextPage = () => {
   return (
