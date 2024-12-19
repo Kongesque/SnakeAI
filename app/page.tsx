@@ -16,7 +16,7 @@ const Home: NextPage = () => {
         </p>
         <a
           href="https://github.com/Kongesque/perfect-snakeAI"
-          className="inline-block hover:text-accent transition-colors geist-mono-font underline text-sm sm:text-base"
+          className="inline-block hover:underline hover:decoration-[#484a4a] geist-mono-font text-sm sm:text-base text-[#8c9191]"
           target="_blank"
           rel="noopener noreferrer"
         >

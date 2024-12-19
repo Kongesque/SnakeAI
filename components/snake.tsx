@@ -48,6 +48,12 @@ const SnakeGame: React.FC = () => {
                 a.style.cursor = 'pointer';
             }
 
+            window.addEventListener('keydown', (event) => {
+                if (event.code === 'Space') {
+                    toggleSpeed();
+                }
+            });
+
             window.addEventListener("resize", resize);
         };
 
